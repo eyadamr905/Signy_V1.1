@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:test12/Auth/auth.dart';
+import 'package:test12/Home/home.dart';
 
 import 'classes.dart';
 import 'signUp.dart';
@@ -202,7 +203,7 @@ class _signinState extends State<signin> {
              child: GestureDetector(
                        onTap: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const signUp()));
+                  MaterialPageRoute(builder: (context) => const home()));
                        },
                        child: const Text(
               " Go as a guest",

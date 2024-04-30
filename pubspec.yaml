@@ -37,9 +37,14 @@ dependencies:
   cupertino_icons: ^1.0.6
   flutter_signin_button: ^2.0.0
 
-  #firebase
+  #fireBase
   firebase_core: ^2.30.0
   firebase_auth: ^4.19.2
+  #onBoardingScreen
+  shared_preferences: ^2.2.3
+  smooth_page_indicator: ^1.1.0
+  camera: ^0.10.5+9
+  tflite: ^1.1.2
 
 dev_dependencies:
   flutter_test:
@@ -65,10 +70,20 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets\first.png
-    - assets\girl.png
-    - assets\hands.png
-    - assets\lang.png
+    - assets/first.png
+    - assets/girl.png
+    - assets/hands.png
+    - assets/lang.png
+    - assets/woman1.png
+    - assets/woman2.png
+    - assets/woman3.png
+    - assets/123.png
+    - assets/a1.png
+    - assets/babyfood.png
+    - assets/dog.png
+    - assets/shirt.png
+    - assets/MODEL.tflite
+    - assets/labels.txt
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
