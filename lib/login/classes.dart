@@ -14,8 +14,8 @@ class costumB extends StatelessWidget {
       
         decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(15)), color: colorW),
-        height: 150,
-        width: 250,
+        height: 160,
+        width: 320,
         padding: EdgeInsets.all(30),
         child: Row(
           children: [
@@ -48,32 +48,8 @@ class costumB extends StatelessWidget {
     
     );
   }
+
 }
-class Botton_nav extends StatelessWidget{
-
-Botton_nav({super.key});
-Widget build(BuildContext context) {
-    return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-         onTap: (value) {
-        if (value == 0) Navigator.push(context,MaterialPageRoute(builder: (context) => Learning()),);
-        if (value == 2)Navigator.push(context,MaterialPageRoute(builder: (context) => home()),);
-      },
-        
-        backgroundColor: Colors.orange,
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.black,
-        selectedFontSize: 18,
-        unselectedFontSize: 15,
-        
-        items:[ 
-          
-      BottomNavigationBarItem(icon: Icon(Icons.home_outlined), label: "Home",backgroundColor: Colors.white),
-      BottomNavigationBarItem(icon: Icon(Icons.person_2_outlined),label: "Profile"),
-      BottomNavigationBarItem(icon: Icon(Icons.saved_search_outlined),label: "Saves"),
-
-      ]),);
-}}
 Image logoWidget(String imageName) {
   return Image.asset(
     imageName,

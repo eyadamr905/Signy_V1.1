@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:test12/Home/Learning/alphabet.dart';
 import 'package:test12/Home/home.dart';
 
 import '../login/classes.dart';
@@ -16,7 +17,9 @@ class _LearningState extends State<Learning> {
   Widget build(BuildContext context) {
     return Scaffold(
       
-        bottomNavigationBar: BottomNavigationBar(
+         bottomNavigationBar: ClipRRect(
+          borderRadius: BorderRadius.only(topLeft: Radius.circular(25),topRight: Radius.circular(25)),
+          child: BottomNavigationBar(
          onTap: (value) {
         if (value == 0) Navigator.push(context,MaterialPageRoute(builder: (context) => home()),);
          if (value == 1) Navigator.push(context,MaterialPageRoute(builder: (context) => Profile()),);
@@ -31,9 +34,9 @@ class _LearningState extends State<Learning> {
         items:[ 
       BottomNavigationBarItem(icon: Icon(Icons.home_outlined), label: "Home"),
       BottomNavigationBarItem(icon: Icon(Icons.person_2_outlined),label: "Profile"),
-      BottomNavigationBarItem(icon: Icon(Icons.saved_search_outlined),label: "Saves",backgroundColor: Colors.white),
+      BottomNavigationBarItem(icon: Icon(Icons.saved_search_outlined),label: "Learning",backgroundColor: Colors.white),
 
-      ]),
+      ])),
       appBar: AppBar(
         toolbarHeight: 60,
         leading: CircleAvatar(
@@ -48,8 +51,14 @@ class _LearningState extends State<Learning> {
           Container(
             height: 30,
           ),
-          costumB(
-            text: "Alphabet    ",colorW:Colors.orange ,img: "assets/a1.png",
+          InkWell(
+            child: costumB(
+              text: "Alphabet    ",colorW:Colors.orange ,img: "assets/a1.png",
+            ),
+            onTap: (){
+                 Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => const Alphabet()));
+            },
           ),
           Container(
             height: 30
@@ -84,10 +93,6 @@ class _LearningState extends State<Learning> {
           Container(
             height: 30,
           ),          
-          costumB(
-            text: "Clothes      ",colorW: Color.fromARGB(255, 204, 93, 74) ,img: "assets/shirt.png",
-            
-          ),
            Container(
             height: 30,
           ),

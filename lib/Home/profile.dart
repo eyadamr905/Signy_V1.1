@@ -17,7 +17,9 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-              bottomNavigationBar: BottomNavigationBar(
+               bottomNavigationBar: ClipRRect(
+          borderRadius: BorderRadius.only(topLeft: Radius.circular(25),topRight: Radius.circular(25)),
+          child: BottomNavigationBar(
          onTap: (value) {
         if (value == 0) Navigator.push(context,MaterialPageRoute(builder: (context) => home()),);
         if (value == 1) Navigator.push(context,MaterialPageRoute(builder: (context) => Profile()),);
@@ -34,7 +36,7 @@ class _ProfileState extends State<Profile> {
       BottomNavigationBarItem(icon: Icon(Icons.person_2_outlined),label: "Profile",backgroundColor: Colors.white),
       BottomNavigationBarItem(icon: Icon(Icons.saved_search_outlined),label: "Saves"),
 
-      ]),
+      ])),
       appBar: AppBar(
         toolbarHeight: 60,
         leading: CircleAvatar(

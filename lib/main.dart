@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:test12/onbording/onbording.dart';
 import 'package:test12/onbording/onbording1.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:tflite/tflite.dart';
 import 'Home/home.dart';
 import 'firebase_options.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -24,7 +25,7 @@ void openFun() async {
 }
 
 void main() async {
-  
+
    openFun();
 
 await Firebase.initializeApp(

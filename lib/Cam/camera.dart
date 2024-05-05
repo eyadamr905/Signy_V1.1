@@ -2,6 +2,8 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:tflite/tflite.dart';
 
+import 'Xcam.dart';
+
 
 class camera extends StatefulWidget {
   @override
@@ -24,16 +26,16 @@ class _cameraState extends State<camera> {
 
   initCamera() {
 
-    // cameraController = CameraController(cameras![0], ResolutionPreset.medium);
+     cameraController = CameraController(cameras![0], ResolutionPreset.medium);
 
     // OR
-    cameraController = CameraController(
-        CameraDescription(
-          name: '0', // 0 for back camera and 1 for front camera
-          lensDirection: CameraLensDirection.back,
-          sensorOrientation: 0,
-        ),
-        ResolutionPreset.medium);
+    // cameraController = CameraController(
+    //     CameraDescription(
+    //       name: '0', // 0 for back camera and 1 for front camera
+    //       lensDirection: CameraLensDirection.back,
+    //       sensorOrientation: 0,
+    //     ),
+    //     ResolutionPreset.medium);
 
 
 
@@ -51,12 +53,12 @@ class _cameraState extends State<camera> {
               (image) => {
                 if (true)
                   {
-                    // setState(
-                    //   () {
-                    //     cameraImage = image;
-                    //   },
-                    // ),
-                    cameraImage = image,
+                     setState(
+                       () {
+                         cameraImage = image;
+                       },
+                     ),
+                    //cameraImage = image,
 
                     applymodelonimages(),
                   }
@@ -178,3 +180,18 @@ class _cameraState extends State<camera> {
     );
   }
 }
+/*
+import 'package:tflite/tflite.dart';
+
+
+
+  // Method to run inference
+
+
+// Usage:
+void main() async {
+  await YourModelHandler.loadModel();
+  List<double> inputData = [/* Your input data */];
+  await YourModelHandler.runInference(inputData);
+}
+*/
