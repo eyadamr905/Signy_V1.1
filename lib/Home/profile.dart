@@ -17,13 +17,19 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+       appBar: 
+       AppBar(
+
+      iconTheme:  const IconThemeData(),
+      title: const Text('Learning Time',style:TextStyle(fontWeight: FontWeight.w500) ,),
+      ),
                bottomNavigationBar: ClipRRect(
-          borderRadius: BorderRadius.only(topLeft: Radius.circular(25),topRight: Radius.circular(25)),
+          borderRadius: const BorderRadius.only(topLeft: Radius.circular(25),topRight: Radius.circular(25)),
           child: BottomNavigationBar(
          onTap: (value) {
-        if (value == 0) Navigator.push(context,MaterialPageRoute(builder: (context) => home()),);
-        if (value == 1) Navigator.push(context,MaterialPageRoute(builder: (context) => Profile()),);
-         if (value == 2) Navigator.push(context,MaterialPageRoute(builder: (context) => Learning()),);
+        if (value == 0) Navigator.push(context,MaterialPageRoute(builder: (context) => const home()),);
+        if (value == 1) Navigator.push(context,MaterialPageRoute(builder: (context) => const Profile()),);
+         if (value == 2) Navigator.push(context,MaterialPageRoute(builder: (context) => const Learning()),);
       },
         currentIndex: 1,
         backgroundColor: Colors.orange,
@@ -32,19 +38,10 @@ class _ProfileState extends State<Profile> {
         selectedFontSize: 18,
         unselectedFontSize: 15,
         items:[ 
-      BottomNavigationBarItem(icon: Icon(Icons.home_outlined), label: "Home",),
-      BottomNavigationBarItem(icon: Icon(Icons.person_2_outlined),label: "Profile",backgroundColor: Colors.white),
-      BottomNavigationBarItem(icon: Icon(Icons.saved_search_outlined),label: "Saves"),
-
+      const BottomNavigationBarItem(icon: Icon(Icons.home_outlined), label: "Home",),
+      const BottomNavigationBarItem(icon: Icon(Icons.person_2_outlined),label: "Profile",backgroundColor: Colors.white),
+      const BottomNavigationBarItem(icon: Icon(Icons.saved_search_outlined),label: "Saves"),
       ])),
-      appBar: AppBar(
-        toolbarHeight: 60,
-        leading: CircleAvatar(
-         backgroundImage: AssetImage("assets/shirt.png")
-        ),
-      iconTheme:  IconThemeData(),
-      title: Text('Learning Time',style:TextStyle(fontWeight: FontWeight.w500) ,),
-      ),
       body: Column(
           children: [
              Center(
@@ -55,9 +52,8 @@ class _ProfileState extends State<Profile> {
                            FirebaseAuth.instance.signOut();
               Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (context) => signin()),
-              );
-                        
+                MaterialPageRoute(builder: (context) => const signin()),
+              );    
                       },
                       style: ElevatedButton.styleFrom(
                         fixedSize: const Size(260, 60),
@@ -76,11 +72,8 @@ class _ProfileState extends State<Profile> {
                     ),
             ),
           )
-
           ],
-
-      ),
-         
+      ),         
     );
   }
 }

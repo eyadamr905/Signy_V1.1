@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_set_literal
+
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:tflite/tflite.dart';
@@ -17,31 +19,29 @@ class _cameraState extends State<camera> {
   
   
 //  change the model name in main file at line number 35,36 
-//   loadmodel() async {
-//     Tflite.loadModel(
-//       model: "assets/detect.tflite",
-//       labels: "assets/labels.txt",
-//     );
-//   }
-
+loadModel() async {
+  try {
+    await Tflite.loadModel(
+      model: "assets/MODEL.tflite",
+      labels: "assets/labels.txt",
+    );
+    print("Model loaded successfully");
+  } catch (e) {
+    print("Failed to load model: $e");
+  }
+}
   initCamera() {
 
-     cameraController = CameraController(cameras![0], ResolutionPreset.medium);
+     //cameraController = CameraController(cameras![1], ResolutionPreset.medium);
 
-    // OR
-    // cameraController = CameraController(
-    //     CameraDescription(
-    //       name: '0', // 0 for back camera and 1 for front camera
-    //       lensDirection: CameraLensDirection.back,
-    //       sensorOrientation: 0,
-    //     ),
-    //     ResolutionPreset.medium);
-
-
-
-
-
-
+    
+    cameraController = CameraController(
+        CameraDescription(
+          name: '1', // 0 for back camera and 1 for front camera
+          lensDirection: CameraLensDirection.back,
+          sensorOrientation: 0,
+        ),
+        ResolutionPreset.medium);
     cameraController!.initialize().then(
       (value) {
         if (!mounted) {
@@ -58,8 +58,6 @@ class _cameraState extends State<camera> {
                          cameraImage = image;
                        },
                      ),
-                    //cameraImage = image,
-
                     applymodelonimages(),
                   }
               },
@@ -71,48 +69,41 @@ class _cameraState extends State<camera> {
   }
 
   applymodelonimages() async {
-    if (cameraImage != null) {
+  if (cameraImage != null) {
+    try {
       var predictions = await Tflite.runModelOnFrame(
-          bytesList: cameraImage!.planes.map(
-            (plane) {
-              return plane.bytes;
-            },
-          ).toList(),
-          imageHeight: cameraImage!.height,
-          imageWidth: cameraImage!.width,
-          imageMean: 127.5,
-          imageStd: 127.5,
-          rotation: 90,
-          numResults: 3,
-          threshold: 0.1,
-          asynch: true);
-
-      answer = '';
-
-      predictions!.forEach(
-        (prediction) {
-          answer +=
-              prediction['labels'].toString().substring(0, 1).toUpperCase() +
-                  prediction['labels'].toString().substring(1) +
-                  " " +
-                  (prediction['confidence'] as double).toStringAsFixed(3) +
-                  '\n';
-        },
+        bytesList: cameraImage!.planes.map((plane) => plane.bytes).toList(),
+        imageHeight: cameraImage!.height,
+        imageWidth: cameraImage!.width,
+        imageMean: 127.5,
+        imageStd: 127.5,
+        rotation: 90,
+        numResults: 3,
+        threshold: 0.1,
+        asynch: true,
       );
 
-      setState(
-        () {
-          answer = answer;
-        },
-      );
+    setState(() {
+        if (predictions != null && predictions.isNotEmpty) {
+          answer = '';
+          predictions.forEach((prediction) {
+            answer +=
+                "${prediction['label']} ${(prediction['confidence'] as double).toStringAsFixed(3)}\n";
+          });
+        } else {
+          answer = 'No predictions';
+        }
+      });
+    } catch (e) {
+      print("Error running model: $e");
     }
   }
-
+}
   @override
   void initState() {
     super.initState();
     initCamera();
-    // loadmodel();
+     loadModel();
   }
 
   @override

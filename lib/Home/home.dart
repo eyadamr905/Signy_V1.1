@@ -1,5 +1,7 @@
 
 
+// ignore_for_file: camel_case_types
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -26,51 +28,53 @@ class _homeState extends State<home> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+          appBar:  
+              AppBar(
+          
+          title: const Text(' Welcome To Signy',style:TextStyle (fontSize: 32,fontWeight: FontWeight.w500,color: Color.fromARGB(255, 0, 0, 0)), ),
+          
+          ),
        bottomNavigationBar: ClipRRect(
-          borderRadius: BorderRadius.only(topLeft: Radius.circular(25),topRight: Radius.circular(25)),
+          borderRadius: const BorderRadius.only(topLeft: Radius.circular(25),topRight: Radius.circular(25)),
           child: BottomNavigationBar(
            onTap: (value) {
           if (value == 0) Navigator.push(context,MaterialPageRoute(builder: (context) => const home()),);
-           if (value == 1) Navigator.push(context,MaterialPageRoute(builder: (context) => Profile()),);
-          if (value == 2)Navigator.push(context,MaterialPageRoute(builder: (context) => const Learning()),
+           if (value == 1) Navigator.push(context,MaterialPageRoute(builder: (context) => const Profile()),);
+          if (value == 2) {
+            Navigator.push(context,MaterialPageRoute(builder: (context) => const Learning()),
           );
+          }
         },
           currentIndex: 0,
-          backgroundColor: Color.fromARGB(255, 244, 183, 131),
+          backgroundColor: const Color.fromARGB(255, 244, 183, 131),
           selectedItemColor: Colors.white,
           unselectedItemColor: Colors.black,
           selectedFontSize: 18,
           unselectedFontSize: 15,
-          items:[ 
-        const BottomNavigationBarItem(icon: Icon(Icons.home_outlined),label: "Home",backgroundColor: Colors.white),
-        const BottomNavigationBarItem(icon: Icon(Icons.person_2_outlined),label: "Profile"),
-        const BottomNavigationBarItem(icon: Icon(Icons.saved_search_outlined),label: "Saves"),
+          items:const [ 
+        BottomNavigationBarItem(icon: Icon(Icons.home_outlined),label: "Home",backgroundColor: Colors.white),
+        BottomNavigationBarItem(icon: Icon(Icons.person_2_outlined),label: "Profile"),
+        BottomNavigationBarItem(icon: Icon(Icons.book),label: "Learning"),
       
         ])),
-        appBar:  AppBar(
-          backgroundColor: const Color.fromARGB(255, 249, 249, 249),
-          toolbarHeight: 60,
-          leading: const CircleAvatar(
-           backgroundImage: AssetImage("assets/shirt.png")
-          ),
-        iconTheme:  const IconThemeData(),
-        title: const Text('Harbi',style:TextStyle(fontWeight: FontWeight.w500,color: Color.fromARGB(255, 0, 0, 0)) ,),
-        ),
+
         body: SingleChildScrollView(
-             
-            
-              child: Center(
+              
                 child: Column(
                   children: [
-                     Text("saddddddddddsssss",
-                    textAlign: TextAlign.left,
+                    const Padding(
+                      padding: EdgeInsets.only(top: 30.0,right: 90),
+                      child: Text("How can We help you ?... ",
+                      style: TextStyle(
+                        fontSize: 20
+                      ),),
                     ),
                        const SizedBox(
-                      height: 110,
+                      height: 40,
                        ),
                   InkWell(
                     child: costumB(
-                      text: "Learn    ",colorW:Color.fromARGB(255, 244, 183, 131) ,img: "assets/woman1.png", 
+                      text: "Learn    ",colorW:const Color.fromARGB(255, 244, 183, 131) ,img: "assets/woman1.png", 
                     ),
                      onTap: (){
                          Navigator.push(context,
@@ -95,11 +99,11 @@ class _homeState extends State<home> {
                   ),
                   InkWell(
                     child: costumB(
-                      text: "From words to sign    ",colorW:Color.fromARGB(255, 244, 183, 131) ,img: "assets/woman3.png",
+                      text: "From words to sign    ",colorW:const Color.fromARGB(255, 244, 183, 131) ,img: "assets/woman3.png",
                     ),
                      onTap: (){
                          Navigator.push(context,
-                          MaterialPageRoute(builder: (context) =>  SignToWord()));
+                          MaterialPageRoute(builder: (context) =>  const SignToWord()));
                           }
                   ),
                    const SizedBox(
@@ -107,13 +111,12 @@ class _homeState extends State<home> {
                   ),
                    const SizedBox(
                     height: 30,
-                  ),
-                        
+                  ),    
                   ],
                 ),
               ),
             )
-          ),
+         ,
     );
   }
 }

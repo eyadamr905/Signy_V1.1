@@ -101,7 +101,7 @@ class _signinState extends State<signin> {
                         return null;
                       },
                       obscureText: true,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         labelText: "    Password",
                         hintStyle: TextStyle(color: Colors.amber),
                         filled: true,
@@ -184,7 +184,7 @@ class _signinState extends State<signin> {
             padding: const EdgeInsets.only(top: 20.0),
             child: SignInButton(
               Buttons.Google,
-              text: "Sign up with Google",
+              text: "Sign In with Google",
               onPressed: () {},
             ),
           ),
@@ -194,7 +194,7 @@ class _signinState extends State<signin> {
               mini: false,
              
               Buttons.Facebook,
-              text: "Sign up with Google",
+              text: "Sign In with Google",
               onPressed: () {},
             ),
           ),
@@ -225,16 +225,17 @@ class _signinState extends State<signin> {
         const Text("Don't have account?",
             style: TextStyle(color: Color.fromARGB(179, 16, 16, 16))),
         GestureDetector(
-          onTap: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const signUp()));
-          },
+          
           child: const Text(
             " Sign Up",
             style: TextStyle(
                 color: Color.fromARGB(255, 1, 1, 1),
                 fontWeight: FontWeight.bold),
           ),
+          onTap: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const signUp()));
+          },
         ),
        
       ],

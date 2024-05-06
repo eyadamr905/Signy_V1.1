@@ -10,36 +10,39 @@ class costumB extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(child: 
-     Container(
-      
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(15)), color: colorW),
-        height: 160,
-        width: 320,
-        padding: EdgeInsets.all(30),
-        child: Row(
-          children: [
-            Expanded(
-           //   padding: const EdgeInsets.only(right: 0),
-              child: Text(
-              '$text ',
-              textAlign: TextAlign.left,
-              style: TextStyle(
-                  fontWeight: FontWeight.w800,
-                  fontSize: 23.1,
-                  color: Colors.black),
-                        ),
-                        
-            ), 
-           Image.asset(img,fit: BoxFit.cover, alignment: Alignment.centerRight,
-           height: 90,
-           width: 90,
-           
-           )
-          ]
-        )
+     Padding(
+       padding: const EdgeInsets.only(left: 30.0),
+       child: Container(
         
- ),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(15)), color: colorW),
+          height: 160,
+          width: 320,
+          padding: EdgeInsets.all(30),
+          child: Row(
+            children: [
+              Expanded(
+             //   padding: const EdgeInsets.only(right: 0),
+                child: Text(
+                '$text ',
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                    fontWeight: FontWeight.w800,
+                    fontSize: 23.1,
+                    color: Colors.black),
+                          ),
+                          
+              ), 
+             Image.asset(img,fit: BoxFit.cover, alignment: Alignment.centerRight,
+             height: 90,
+             width: 90,
+             
+             )
+            ]
+          )
+          
+        ),
+     ),
 //     onTap: () {
 //  Navigator.of(context).push(
 // MaterialPageRoute(builder: (context) => Learning())//اكتب هنا اسم الصفحه او اعملها ب فوق لنتروق"variable"

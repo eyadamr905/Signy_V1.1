@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:test12/Home/Learning/Food.dart';
 import 'package:test12/Home/Learning/alphabet.dart';
+import 'package:test12/Home/Learning/animals.dart';
+import 'package:test12/Home/Learning/numbers.dart';
 import 'package:test12/Home/home.dart';
 
 import '../login/classes.dart';
@@ -38,66 +41,78 @@ class _LearningState extends State<Learning> {
 
       ])),
       appBar: AppBar(
-        toolbarHeight: 60,
-        leading: CircleAvatar(
-         backgroundImage: AssetImage("assets/shirt.png")
-        ),
+       
       iconTheme:  IconThemeData(),
       title: Text('Learning Time',style:TextStyle(fontWeight: FontWeight.w500) ,),
       ),
       body: SingleChildScrollView(
-          child: Column(
-        children: [
-          Container(
-            height: 30,
-          ),
-          InkWell(
-            child: costumB(
-              text: "Alphabet    ",colorW:Colors.orange ,img: "assets/a1.png",
+          child: Center(
+            child: Column(
+                    children: [
+            Container(
+              height: 30,
             ),
-            onTap: (){
-                 Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const Alphabet()));
-            },
-          ),
-          Container(
-            height: 30
-          ),
-          //second
-          costumB(
-            text: "Numbers   ",colorW: Color.fromARGB(255, 194, 91, 125),img: "assets/123.png",
+            InkWell(
+              child: costumB(
+                text: "Alphabet    ",colorW:Colors.orange ,img: "assets/a1.png",
+              ),
+              onTap: (){
+                   Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => const Alphabet()));
+              },
+            ),
+            Container(
+              height: 30
+            ),
+            //second
+            InkWell(
+              child: costumB(
+                text: "Numbers   ",colorW: Color.fromARGB(255, 194, 91, 125),img: "assets/123.png",
+                ),
+                 onTap: (){
+                   Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => const numbers()));
+              },
+            ),
+              
+                    
+            Container(
+              height: 30,
+            ),
+            //third
+            InkWell(
+              child: costumB(
+                text: "Animals     ",colorW: Colors.purple ,img: "assets/dog.png",
+              ),
+                 onTap: (){
+                   Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => const Animals()));
+              },
             ),
             
-        
-          Container(
-            height: 30,
-          ),
-          //third
-          costumB(
-            text: "Animals     ",colorW: Colors.purple ,img: "assets/dog.png",
             
-          ),
-
-
-          Container(
-            height: 30,
-          ),
-
-
-          //forth
-          costumB(
-            text: "Food           ",colorW: Color.fromARGB(255, 186, 17, 85),img: "assets/babyfood.png",
+            Container(
+              height: 30,
+            ),
             
-          ),
-
-          Container(
-            height: 30,
-          ),          
-           Container(
-            height: 30,
-          ),
-        ],
-      )
+            
+            //forth
+            InkWell(
+              child: costumB(
+                text: "Food           ",colorW: Color.fromARGB(255, 186, 17, 85),img: "assets/babyfood.png",
+              ),
+                 onTap: (){
+                   Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => const food()));
+              },
+            ),
+            
+            Container(
+              height: 60,
+            ),          
+                    ],
+                  ),
+          )
       ),
     );
   }
