@@ -1,6 +1,8 @@
+// ignore_for_file: camel_case_types, prefer_const_constructors_in_immutables, prefer_const_constructors
+
 import 'package:flutter/material.dart';
-import 'package:test12/Home/home.dart';
-import '../Home/learning.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 class costumB extends StatelessWidget {
   final Color colorW;
   final String text;
@@ -10,15 +12,14 @@ class costumB extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(child: 
-     Padding(
-       padding: const EdgeInsets.only(left: 30.0),
-       child: Container(
-        
+      Padding(
+        padding: const EdgeInsets.only(left: 30.0),
+        child: Container(
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(15)), color: colorW),
+              borderRadius: const BorderRadius.all(Radius.circular(15)), color: colorW),
           height: 160,
           width: 320,
-          padding: EdgeInsets.all(30),
+          padding: const EdgeInsets.all(30),
           child: Row(
             children: [
               Expanded(
@@ -31,27 +32,22 @@ class costumB extends StatelessWidget {
                     fontSize: 23.1,
                     color: Colors.black),
                           ),
-                          
               ), 
-             Image.asset(img,fit: BoxFit.cover, alignment: Alignment.centerRight,
-             height: 90,
-             width: 90,
-             
-             )
-            ]
-          )
-          
+            Image.asset(img,fit: BoxFit.cover, alignment: Alignment.centerRight,
+            height: 90,
+            width: 90,
+            ),
+            ],
+          ),
         ),
-     ),
+    ),
 //     onTap: () {
 //  Navigator.of(context).push(
 // MaterialPageRoute(builder: (context) => Learning())//اكتب هنا اسم الصفحه او اعملها ب فوق لنتروق"variable"
 // );
 //  },
-    
     );
   }
-
 }
 Image logoWidget(String imageName) {
   return Image.asset(
@@ -118,7 +114,6 @@ Container firebaseUIButton(BuildContext context, String title, Function onTap) {
       ),
     ),
   );
-  
 }
 
 class text extends StatelessWidget {
@@ -128,7 +123,6 @@ class text extends StatelessWidget {
   final FontWeight? weight;
   final TextAlign? align;
   final Color? color;
-
   text({
     super.key,
     required this.txt,
@@ -151,5 +145,52 @@ class text extends StatelessWidget {
         height: height,
       ),
     );
+  }
+}
+//==========================================================
+//Themes
+class UiProvider extends ChangeNotifier {
+  bool _isDark = false;
+  bool get isDark => _isDark;
+
+  late SharedPreferences storage;
+
+  final darkTheme = ThemeData(
+    primaryColor: Colors.black,
+    brightness: Brightness.dark,
+    primaryColorDark: Colors.black,
+    appBarTheme: const AppBarTheme(
+      iconTheme: IconThemeData(color: Colors.white),
+    ),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        foregroundColor: Colors.white,
+      ),
+    ),
+  );
+
+  final lightTheme = ThemeData(
+    primaryColor: Colors.white,
+    brightness: Brightness.light,
+    primaryColorDark: Colors.white,
+    appBarTheme: const AppBarTheme(
+      iconTheme: IconThemeData(color: Colors.black),
+    ),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        foregroundColor: Colors.black,
+      ),
+    ),
+  );
+  changeTheme() {
+    _isDark = !isDark;
+    storage.setBool("isDark", _isDark);
+    notifyListeners();
+  }
+
+  init() async {
+    storage = await SharedPreferences.getInstance();
+    _isDark = storage.getBool("isDark") ?? false;
+    notifyListeners();
   }
 }

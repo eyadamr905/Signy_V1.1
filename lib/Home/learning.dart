@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_literals_to_create_immutables, library_private_types_in_public_api, use_super_parameters
+
 import 'package:flutter/material.dart';
 import 'package:test12/Home/Learning/Food.dart';
 import 'package:test12/Home/Learning/alphabet.dart';
@@ -21,12 +23,12 @@ class _LearningState extends State<Learning> {
     return Scaffold(
       
          bottomNavigationBar: ClipRRect(
-          borderRadius: BorderRadius.only(topLeft: Radius.circular(25),topRight: Radius.circular(25)),
+          borderRadius: const BorderRadius.only(topLeft: Radius.circular(25),topRight: Radius.circular(25)),
           child: BottomNavigationBar(
          onTap: (value) {
-        if (value == 0) Navigator.push(context,MaterialPageRoute(builder: (context) => home()),);
-         if (value == 1) Navigator.push(context,MaterialPageRoute(builder: (context) => Profile()),);
-         if (value == 2) Navigator.push(context,MaterialPageRoute(builder: (context) => Learning()),);
+        if (value == 0) Navigator.push(context,MaterialPageRoute(builder: (context) => const home()),);
+         if (value == 1) Navigator.push(context,MaterialPageRoute(builder: (context) => const Profile()),);
+         if (value == 2) Navigator.push(context,MaterialPageRoute(builder: (context) => const Learning()),);
       },
         currentIndex: 2,
         backgroundColor: Colors.orange,
@@ -35,15 +37,15 @@ class _LearningState extends State<Learning> {
         selectedFontSize: 18,
         unselectedFontSize: 15,
         items:[ 
-      BottomNavigationBarItem(icon: Icon(Icons.home_outlined), label: "Home"),
-      BottomNavigationBarItem(icon: Icon(Icons.person_2_outlined),label: "Profile"),
-      BottomNavigationBarItem(icon: Icon(Icons.saved_search_outlined),label: "Learning",backgroundColor: Colors.white),
+      const BottomNavigationBarItem(icon: Icon(Icons.home_outlined), label: "Home"),
+      const BottomNavigationBarItem(icon: Icon(Icons.person_2_outlined),label: "Profile"),
+      const BottomNavigationBarItem(icon: Icon(Icons.saved_search_outlined),label: "Learning",backgroundColor: Colors.white),
 
       ])),
       appBar: AppBar(
        
-      iconTheme:  IconThemeData(),
-      title: Text('Learning Time',style:TextStyle(fontWeight: FontWeight.w500) ,),
+      iconTheme:  const IconThemeData(),
+      title: const Text('Learning Time',style:TextStyle(fontWeight: FontWeight.w500) ,),
       ),
       body: SingleChildScrollView(
           child: Center(
@@ -67,7 +69,7 @@ class _LearningState extends State<Learning> {
             //second
             InkWell(
               child: costumB(
-                text: "Numbers   ",colorW: Color.fromARGB(255, 194, 91, 125),img: "assets/123.png",
+                text: "Numbers   ",colorW: const Color.fromARGB(255, 194, 91, 125),img: "assets/123.png",
                 ),
                  onTap: (){
                    Navigator.push(context,
@@ -99,7 +101,7 @@ class _LearningState extends State<Learning> {
             //forth
             InkWell(
               child: costumB(
-                text: "Food           ",colorW: Color.fromARGB(255, 186, 17, 85),img: "assets/babyfood.png",
+                text: "Food           ",colorW: const Color.fromARGB(255, 186, 17, 85),img: "assets/babyfood.png",
               ),
                  onTap: (){
                    Navigator.push(context,

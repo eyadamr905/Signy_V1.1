@@ -4,8 +4,6 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:tflite/tflite.dart';
 
-import 'Xcam.dart';
-
 
 class camera extends StatefulWidget {
   @override
@@ -171,18 +169,3 @@ loadModel() async {
     );
   }
 }
-/*
-import 'package:tflite/tflite.dart';
-
-
-
-  // Method to run inference
-
-
-// Usage:
-void main() async {
-  await YourModelHandler.loadModel();
-  List<double> inputData = [/* Your input data */];
-  await YourModelHandler.runInference(inputData);
-}
-*/

@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_literals_to_create_immutables, use_super_parameters, library_private_types_in_public_api
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:test12/Home/home.dart';
@@ -21,7 +23,7 @@ class _ProfileState extends State<Profile> {
        AppBar(
 
       iconTheme:  const IconThemeData(),
-      title: const Text('Learning Time',style:TextStyle(fontWeight: FontWeight.w500) ,),
+      title: const Text('My  Profile ',style:TextStyle(fontWeight: FontWeight.w500) ,),
       ),
                bottomNavigationBar: ClipRRect(
           borderRadius: const BorderRadius.only(topLeft: Radius.circular(25),topRight: Radius.circular(25)),
@@ -57,7 +59,7 @@ class _ProfileState extends State<Profile> {
                       },
                       style: ElevatedButton.styleFrom(
                         fixedSize: const Size(260, 60),
-                        backgroundColor: Colors.amber,
+                        backgroundColor: Colors.orange,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(14),
                         ),

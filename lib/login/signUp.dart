@@ -1,16 +1,15 @@
 
+// ignore_for_file: unused_field, file_names
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:test12/Auth/auth.dart';
-
-
 import '../Home/home.dart';
 import 'classes.dart';
 
 // ignore: camel_case_types
 class signUp extends StatefulWidget {
-   const signUp({super.key});
-
+  const signUp({super.key});
   @override
   State<signUp> createState() => _signUpState();
 }
@@ -21,7 +20,7 @@ class _signUpState extends State<signUp> {
   final TextEditingController controllerEmail = TextEditingController();
   final TextEditingController _userNameController = TextEditingController();
   final _key =GlobalKey<FormState>();
-   get validator => null;
+  get validator => null;
   Auth auth = Auth();
 
 
@@ -61,18 +60,18 @@ class _signUpState extends State<signUp> {
                             email: controllerEmail.text,
                             password: controllerpassword.text)
                         .then((value) {
-                      print("Created New Account");
+                      // print("Created New Account");
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) => const home()));
                     }).onError((error, stackTrace) {
-                      print("Error ${error.toString()}");
+                      // print("Error ${error.toString()}");
                     });
                   })
                 ],
               ),
             )
-         )
-            ]  ),
+        ),
+        ],),
       ),
     );
   }

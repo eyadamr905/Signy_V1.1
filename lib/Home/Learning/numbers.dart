@@ -1,3 +1,5 @@
+// ignore_for_file: camel_case_types, use_super_parameters
+
 import 'package:flutter/material.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 

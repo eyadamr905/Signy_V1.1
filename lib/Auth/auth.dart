@@ -1,4 +1,6 @@
 
+// ignore_for_file: unused_local_variable, avoid_print
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +17,7 @@ class Auth {
         Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => home(),
+              builder: (context) => const home(),
             ));
       });
     } on FirebaseAuthException catch (e) {
@@ -41,7 +43,7 @@ class Auth {
         Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => home(),
+              builder: (context) => const home(),
             ));
       });
     } on FirebaseAuthException catch (e) {
@@ -64,7 +66,7 @@ class Auth {
         Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => home(),
+              builder: (context) => const home(),
             ));
       });
       print("Signed in with temporary account.");
