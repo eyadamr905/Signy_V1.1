@@ -157,8 +157,9 @@ class UiProvider extends ChangeNotifier {
   bool get isDark => _isDark;
 
   late SharedPreferences storage;
-
+//Dark Theme
   final darkTheme = ThemeData(
+    fontFamily: 'Sign',
     primaryColor: Colors.black,
     brightness: Brightness.dark,
     primaryColorDark: Colors.black,
@@ -171,7 +172,7 @@ class UiProvider extends ChangeNotifier {
       ),
     ),
   );
-
+//White Theme
   final lightTheme = ThemeData(
     primaryColor: Colors.white,
     brightness: Brightness.light,

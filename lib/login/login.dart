@@ -94,7 +94,7 @@ class _signinState extends State<signin> {
               decoration: const InputDecoration(
                 labelText: "    Password",
                 filled: true,
-                fillColor: Colors.white,
+                fillColor: Color.fromARGB(0, 255, 255, 255),
                 errorStyle: TextStyle(fontSize: 18.0),
                 focusedBorder: OutlineInputBorder(
                   borderSide: BorderSide(

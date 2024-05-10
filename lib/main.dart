@@ -46,12 +46,10 @@ class Signy extends StatelessWidget {
           Consumer<UiProvider>(builder: (context, UiProvider notifier, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-         
-          // themeMode: notifier.isDark ? ThemeMode.dark : ThemeMode.light,
-          // themeMode: ThemeMode.dark,
-          // // darkTheme: notifier.isDark ? notifier.darkTheme : notifier.lightTheme,
-          // // darkTheme = notifier.darkTheme,
-          // theme: notifier.darkTheme,
+        themeMode: notifier.isDark ? ThemeMode.dark : ThemeMode.light,
+            darkTheme:
+                notifier.isDark ? notifier.darkTheme : notifier.lightTheme,
+            theme: notifier.lightTheme,
           home:
           start == true? 
             const welcom()

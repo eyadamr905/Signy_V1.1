@@ -2,8 +2,10 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:test12/Home/home.dart';
 import 'package:test12/Home/learning.dart';
+import 'package:test12/login/classes.dart';
 
 import '../login/login.dart';
 
@@ -22,9 +24,58 @@ class _ProfileState extends State<Profile> {
        appBar: 
        AppBar(
 
-      iconTheme:  const IconThemeData(),
+   
       title: const Text('My  Profile ',style:TextStyle(fontWeight: FontWeight.w500) ,),
       ),
+      body: Consumer<UiProvider>(
+        builder: (context, UiProvider notifier, child) {
+        return Column(
+            children: [
+              ListTile(
+                    leading: const Icon(Icons.dark_mode),
+                    title: const Text("Dark mode"),
+                    trailing: Switch(
+                        activeTrackColor: Colors.black,
+                        activeColor: const Color.fromARGB(255, 255, 232, 28),
+                        inactiveThumbColor: Colors.grey,
+                        inactiveTrackColor: Colors.white,
+                        value: notifier.isDark,
+                        onChanged: (value) => setState(() {
+                          notifier.changeTheme();}),
+                  ),),
+               Center(
+              child: Padding(
+                padding: const EdgeInsets.only(top:500.0,left: 100,right: 100),
+                child:ElevatedButton(
+                        onPressed: () {                      
+                             FirebaseAuth.instance.signOut();
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const signin()),
+                );    
+                        },
+                        style: ElevatedButton.styleFrom(
+                          fixedSize: const Size(260, 60),
+                          backgroundColor: Colors.orange,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(14),
+                          ),
+                          foregroundColor: Colors.white,
+                        ),
+                        child: const Text(
+                          "Log out",
+                          style: TextStyle(
+                            fontSize: 25,
+                          ),
+                        ),
+                      ),
+              ),
+            )
+            ],
+        );
+        }
+      ), 
+      
                bottomNavigationBar: ClipRRect(
           borderRadius: const BorderRadius.only(topLeft: Radius.circular(25),topRight: Radius.circular(25)),
           child: BottomNavigationBar(
@@ -43,39 +94,8 @@ class _ProfileState extends State<Profile> {
       const BottomNavigationBarItem(icon: Icon(Icons.home_outlined), label: "Home",),
       const BottomNavigationBarItem(icon: Icon(Icons.person_2_outlined),label: "Profile",backgroundColor: Colors.white),
       const BottomNavigationBarItem(icon: Icon(Icons.book),label: "Learning"),
-      ])),
-      body: Column(
-          children: [
-             Center(
-            child: Padding(
-              padding: const EdgeInsets.only(top:500.0,left: 100,right: 100),
-              child:ElevatedButton(
-                      onPressed: () {                      
-                           FirebaseAuth.instance.signOut();
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => const signin()),
-              );    
-                      },
-                      style: ElevatedButton.styleFrom(
-                        fixedSize: const Size(260, 60),
-                        backgroundColor: Colors.orange,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(14),
-                        ),
-                        foregroundColor: Colors.white,
-                      ),
-                      child: const Text(
-                        "Log out",
-                        style: TextStyle(
-                          fontSize: 25,
-                        ),
-                      ),
-                    ),
-            ),
-          )
-          ],
-      ),         
+      ])),        
     );
+    
   }
 }
