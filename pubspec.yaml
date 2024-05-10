@@ -49,6 +49,7 @@ dependencies:
   video_player: ^2.8.6
   youtube_player_flutter: ^9.0.1
   provider: ^6.1.2
+  image_picker: ^1.1.1
   #logo
 
 dev_dependencies:
@@ -89,6 +90,7 @@ flutter:
     - assets/shirt.png
     - assets/MODEL.tflite
     - assets/labels.txt
+    - assets/avatar.png
 
     
 

@@ -1,6 +1,9 @@
 // ignore_for_file: depend_on_referenced_packages
+import 'dart:typed_data';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:test12/login/classes.dart';
 import 'package:test12/onbording/onbording.dart';
@@ -32,11 +35,14 @@ void main() async {
   );
 //looged = current user in the app
   logged = FirebaseAuth.instance.currentUser;
-  runApp(const Signy());
+  runApp( Signy());
 }
 
 class Signy extends StatelessWidget {
-  const Signy({super.key});
+   Signy({super.key});
+
+
+
 
   @override
   Widget build(BuildContext context) {

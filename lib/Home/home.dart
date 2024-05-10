@@ -27,7 +27,7 @@ class _homeState extends State<home> {
                   child: Column(
                     children: [
                       const Padding(
-                        padding: EdgeInsets.only(top: 30.0,right: 140),
+                        padding: EdgeInsets.only(top: 30.0,right: 120),
                         child: Text("How can We help you ?... ",
                         style: TextStyle(
                           fontSize: 20

@@ -1,6 +1,7 @@
 // ignore_for_file: camel_case_types, prefer_const_constructors_in_immutables, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 //costom_B for containers
 class costumB extends StatelessWidget {
@@ -174,6 +175,7 @@ class UiProvider extends ChangeNotifier {
   );
 //White Theme
   final lightTheme = ThemeData(
+        fontFamily: 'Sign',
     primaryColor: Colors.white,
     brightness: Brightness.light,
     primaryColorDark: Colors.white,
@@ -198,3 +200,11 @@ class UiProvider extends ChangeNotifier {
     notifyListeners();
   }
 }
+PickImage(ImageSource source)async{
+final ImagePicker _imagePicker = ImagePicker();
+XFile? _file = await _imagePicker.pickImage(source: source);
+if (_file != null) {
+  return await _file.readAsBytes();
+}
+print("NoImage picked");
+} 

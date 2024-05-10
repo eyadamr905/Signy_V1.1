@@ -35,7 +35,7 @@ class _signinState extends State<signin> {
               top: 90,
             ),
             child: Text(
-              'Sign In',
+              ' Sign In',
               style: TextStyle(
                 fontSize: 32,
               ),
