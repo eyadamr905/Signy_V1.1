@@ -21,29 +21,7 @@ class _LearningState extends State<Learning> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
-         bottomNavigationBar: ClipRRect(
-          borderRadius: const BorderRadius.only(topLeft: Radius.circular(25),topRight: Radius.circular(25)),
-          child: BottomNavigationBar(
-         onTap: (value) {
-        if (value == 0) Navigator.push(context,MaterialPageRoute(builder: (context) => const home()),);
-         if (value == 1) Navigator.push(context,MaterialPageRoute(builder: (context) => const Profile()),);
-         if (value == 2) Navigator.push(context,MaterialPageRoute(builder: (context) => const Learning()),);
-      },
-        currentIndex: 2,
-        backgroundColor: Colors.orange,
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.black,
-        selectedFontSize: 18,
-        unselectedFontSize: 15,
-        items:[ 
-      const BottomNavigationBarItem(icon: Icon(Icons.home_outlined), label: "Home"),
-      const BottomNavigationBarItem(icon: Icon(Icons.person_2_outlined),label: "Profile"),
-      const BottomNavigationBarItem(icon: Icon(Icons.saved_search_outlined),label: "Learning",backgroundColor: Colors.white),
-
-      ])),
       appBar: AppBar(
-       
       iconTheme:  const IconThemeData(),
       title: const Text('Learning Time',style:TextStyle(fontWeight: FontWeight.w500) ,),
       ),
@@ -116,6 +94,27 @@ class _LearningState extends State<Learning> {
                   ),
           )
       ),
+    
+         bottomNavigationBar: ClipRRect(
+          borderRadius: const BorderRadius.only(topLeft: Radius.circular(25),topRight: Radius.circular(25)),
+          child: BottomNavigationBar(
+         onTap: (value) {
+        if (value == 0) Navigator.push(context,MaterialPageRoute(builder: (context) => const home()),);
+         if (value == 1) Navigator.push(context,MaterialPageRoute(builder: (context) => const Profile()),);
+         if (value == 2) Navigator.push(context,MaterialPageRoute(builder: (context) => const Learning()),);
+      },
+        currentIndex: 2,
+        backgroundColor: Colors.orange,
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.black,
+        selectedFontSize: 18,
+        unselectedFontSize: 15,
+        items:[ 
+      const BottomNavigationBarItem(icon: Icon(Icons.home_outlined), label: "Home"),
+      const BottomNavigationBarItem(icon: Icon(Icons.person_2_outlined),label: "Profile"),
+      const BottomNavigationBarItem(icon: Icon(Icons.book),label: "Learning",backgroundColor: Colors.white),
+
+      ])),
     );
   }
 }

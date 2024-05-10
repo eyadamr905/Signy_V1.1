@@ -23,58 +23,60 @@ class _homeState extends State<home> {
           ),
         body: SingleChildScrollView(
               
-                child: Column(
-                  children: [
-                    const Padding(
-                      padding: EdgeInsets.only(top: 30.0,right: 90),
-                      child: Text("How can We help you ?... ",
-                      style: TextStyle(
-                        fontSize: 20
-                      ),),
-                    ),
-                    const SizedBox(
-                      height: 40,
-                    ),
-                    InkWell(
-                      child: costumB(
-                        text: "Learn    ",colorW:Colors.orange ,img: "assets/woman1.png", 
+                child: Center(
+                  child: Column(
+                    children: [
+                      const Padding(
+                        padding: EdgeInsets.only(top: 30.0,right: 140),
+                        child: Text("How can We help you ?... ",
+                        style: TextStyle(
+                          fontSize: 20
+                        ),),
                       ),
-                      onTap: (){
+                      const SizedBox(
+                        height: 40,
+                      ),
+                      InkWell(
+                        child: costumB(
+                          text: "Learn    ",colorW:Colors.orange ,img: "assets/woman1.png", 
+                        ),
+                        onTap: (){
+                            Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => const Learning()));
+                        },
+                      ),
+                      const SizedBox(
+                        height: 30,
+                      ),
+                      InkWell(
+                        child: costumB(
+                          text: "From sign to words",colorW: Colors.orange ,img: "assets/woman2.png",
+                        ),
+                        onTap: (){
                           Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => const Learning()));
-                      },
-                    ),
-                    const SizedBox(
-                      height: 30,
-                    ),
-                    InkWell(
-                      child: costumB(
-                        text: "From sign to words",colorW: Colors.orange ,img: "assets/woman2.png",
+                          MaterialPageRoute(builder: (context) =>  Xcamera()));
+                        },
                       ),
-                      onTap: (){
-                        Navigator.push(context,
-                        MaterialPageRoute(builder: (context) =>  Xcamera()));
-                      },
-                    ),
-                    const SizedBox(
-                      height: 30,
-                    ),
-                    InkWell(
-                      child: costumB(
-                        text: "From words to sign    ",colorW: Colors.orange ,img: "assets/woman3.png",
+                      const SizedBox(
+                        height: 30,
                       ),
-                      onTap: (){
-                          Navigator.push(context,
-                            MaterialPageRoute(builder: (context) =>  const SignToWord()));
-                            }
-                    ),
-                    const SizedBox(
-                      height: 30,
-                    ),
-                    const SizedBox(
-                      height: 30,
-                    ),    
-                  ],
+                      InkWell(
+                        child: costumB(
+                          text: "From words to sign    ",colorW: Colors.orange ,img: "assets/woman3.png",
+                        ),
+                        onTap: (){
+                            Navigator.push(context,
+                              MaterialPageRoute(builder: (context) =>  const SignToWord()));
+                              }
+                      ),
+                      const SizedBox(
+                        height: 30,
+                      ),
+                      const SizedBox(
+                        height: 30,
+                      ),    
+                    ],
+                  ),
                 ),
               ),
               bottomNavigationBar: ClipRRect(
@@ -83,8 +85,7 @@ class _homeState extends State<home> {
               onTap: (value) {
                 if (value == 0) Navigator.push(context,MaterialPageRoute(builder: (context) => const home()),);
                 if (value == 1) Navigator.push(context,MaterialPageRoute(builder: (context) => const Profile()),);
-                if (value == 2) {
-                  Navigator.push(context,MaterialPageRoute(builder: (context) => const Learning()),
+                if (value == 2) {Navigator.push(context,MaterialPageRoute(builder: (context) => const Learning()),
                 );
               }
               },

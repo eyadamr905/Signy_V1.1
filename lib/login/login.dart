@@ -29,11 +29,11 @@ class _signinState extends State<signin> {
       resizeToAvoidBottomInset: false,
       body: Column(
         children: [
-          const SizedBox(
-            height: 40,
-          ),
           const Padding(
-            padding: EdgeInsets.only(right: 250, top: 50, bottom: 25),
+            padding: EdgeInsets.only(
+              right: 250,
+              top: 90,
+            ),
             child: Text(
               'Sign In',
               style: TextStyle(
@@ -41,12 +41,9 @@ class _signinState extends State<signin> {
               ),
             ),
           ),
-          const SizedBox(
-            height: 30,
-          ),
-          //first one
+          //Email===============================
           Padding(
-            padding: const EdgeInsets.only(left: 30, right: 30, top: 50),
+            padding: const EdgeInsets.only(left: 30, right: 30, top: 80),
             child: TextFormField(
               controller: controllerEmail,
               validator: (value) {
@@ -58,10 +55,10 @@ class _signinState extends State<signin> {
               decoration: const InputDecoration(
                 labelText: '    Email',
                 filled: true,
-                fillColor: Colors.white,
+                fillColor: Color.fromARGB(4, 241, 241, 241),
                 focusedBorder: OutlineInputBorder(
                   borderSide: BorderSide(
-                    width: 3,
+                    width: 5,
                     color: Colors.amber,
                   ),
                   borderRadius: BorderRadius.all(
@@ -81,13 +78,10 @@ class _signinState extends State<signin> {
               ),
             ),
           ),
-          const SizedBox(
-            height: 30,
-          ),
-          //second
+          //password========================================
           Padding(
             padding:
-                const EdgeInsets.only(left: 30, right: 30, top: 20, bottom: 10),
+                const EdgeInsets.only(left: 30, right: 30, top: 50, bottom: 30),
             child: TextFormField(
               controller: controllerpassword,
               validator: (value) {
@@ -99,13 +93,12 @@ class _signinState extends State<signin> {
               obscureText: true,
               decoration: const InputDecoration(
                 labelText: "    Password",
-                hintStyle: TextStyle(color: Colors.amber),
                 filled: true,
                 fillColor: Colors.white,
                 errorStyle: TextStyle(fontSize: 18.0),
                 focusedBorder: OutlineInputBorder(
                   borderSide: BorderSide(
-                    width: 3,
+                    width: 5,
                     color: Colors.amber,
                   ),
                   borderRadius: BorderRadius.all(
@@ -117,7 +110,7 @@ class _signinState extends State<signin> {
                   fontWeight: FontWeight.bold,
                 ),
                 border: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.red),
+                  borderSide: BorderSide(color: Color.fromARGB(255, 0, 0, 0)),
                   borderRadius: BorderRadius.all(
                     Radius.circular(15.0),
                   ),
@@ -125,15 +118,8 @@ class _signinState extends State<signin> {
               ),
             ),
           ),
-          const SizedBox(
-            height: 20,
-          ),
-          //signin button
+          //signin button=======================================
           ElevatedButton(
-            onPressed: () {
-              auth.loginFirebase(
-                  controllerEmail.text, controllerpassword.text, context);
-            },
             style: ElevatedButton.styleFrom(
               fixedSize: const Size(260, 60),
               backgroundColor: Colors.amber,
@@ -148,6 +134,10 @@ class _signinState extends State<signin> {
                 fontSize: 25,
               ),
             ),
+            onPressed: () {
+              auth.loginFirebase(
+                  controllerEmail.text, controllerpassword.text, context);
+            },
           ),
           //other options
           signUpOption(),
@@ -193,30 +183,31 @@ class _signinState extends State<signin> {
           ),
           Padding(
             padding: const EdgeInsets.only(top: 20.0),
-            child: GestureDetector(
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const home()));
-              },
+            child: InkWell(
               child: const Text(
                 " Go as a guest",
                 style: TextStyle(
                     color: Color.fromARGB(255, 1, 1, 1),
                     fontWeight: FontWeight.bold),
               ),
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const home()));
+              },
             ),
           ),
         ],
       ),
     );
   }
+
   Row signUpOption() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         const Text("Don't have account?",
             style: TextStyle(color: Color.fromARGB(179, 16, 16, 16))),
-        GestureDetector(
+        InkWell(
           child: const Text(
             " Sign Up",
             style: TextStyle(

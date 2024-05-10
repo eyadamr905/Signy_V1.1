@@ -12,7 +12,7 @@ import 'login/login.dart';
 
 User? logged;
 bool? start;
-
+//to check if you opendThe App before 
 void openFun() async {
   WidgetsFlutterBinding.ensureInitialized();
   final SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -24,14 +24,13 @@ void openFun() async {
     start = false;
   }
 }
-
 void main() async {
   openFun();
-
+  //decleare the platform 
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-
+//looged = current user in the app
   logged = FirebaseAuth.instance.currentUser;
   runApp(const Signy());
 }
@@ -47,16 +46,17 @@ class Signy extends StatelessWidget {
           Consumer<UiProvider>(builder: (context, UiProvider notifier, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'ToDo App',
+         
           // themeMode: notifier.isDark ? ThemeMode.dark : ThemeMode.light,
-          themeMode: ThemeMode.dark,
-          // darkTheme: notifier.isDark ? notifier.darkTheme : notifier.lightTheme,
-          // darkTheme = notifier.darkTheme,
-          theme: notifier.darkTheme,
-          home: start == true
-              ? const welcom()
-              : logged == null
-                  ? const signin()
+          // themeMode: ThemeMode.dark,
+          // // darkTheme: notifier.isDark ? notifier.darkTheme : notifier.lightTheme,
+          // // darkTheme = notifier.darkTheme,
+          // theme: notifier.darkTheme,
+          home:
+          start == true? 
+            const welcom()
+              : logged == null? 
+                  const signin()
                   : const home(),
         );
       }),

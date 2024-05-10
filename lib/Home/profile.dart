@@ -42,7 +42,7 @@ class _ProfileState extends State<Profile> {
         items:[ 
       const BottomNavigationBarItem(icon: Icon(Icons.home_outlined), label: "Home",),
       const BottomNavigationBarItem(icon: Icon(Icons.person_2_outlined),label: "Profile",backgroundColor: Colors.white),
-      const BottomNavigationBarItem(icon: Icon(Icons.saved_search_outlined),label: "Saves"),
+      const BottomNavigationBarItem(icon: Icon(Icons.book),label: "Learning"),
       ])),
       body: Column(
           children: [

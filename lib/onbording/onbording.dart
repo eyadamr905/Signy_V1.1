@@ -1,12 +1,6 @@
-import 'package:flutter/cupertino.dart';
+// ignore_for_file: camel_case_types
 import 'package:flutter/material.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-
 import '../login/login.dart';
-
-
-
-
 class welcom extends StatefulWidget {
   const welcom({super.key});
 
@@ -15,93 +9,117 @@ class welcom extends StatefulWidget {
 }
 
 class _welcomState extends State<welcom> {
-  PageController _controller=PageController();
+  PageController pageController = PageController(initialPage: 0);
+  int currentPage = 0;
+
   bool last=false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:Stack(
+      backgroundColor: const Color(0xff221F1E),
+      body: Stack(
         children: [
-        PageView(
-       controller: _controller,
-       onPageChanged: (index) {
-         setState(() {
-           last=(index==2);
-         });
-       },
-        
-           children:[ Padding(
-             padding: const EdgeInsets.only(bottom: 90),
-             child: Container(
-                     
-                  child: const Image(image: AssetImage('assets/first.png')),
-                
-              
-                       ),
-           ),
-          Padding(
-             padding: const EdgeInsets.only(bottom: 90),
-            child: Container(
-                    
-                  child: const Image(image: AssetImage('assets/hands.png')),
-                
-              
+          PageView(
+            controller: pageController,
+            onPageChanged: (index) {
+              setState(() {
+                currentPage = index;
+              });
+            },
+            children: [
+              _buildPage("assets/lang.png",
+                  "Hello how can we help you"),
+              _buildPage("assets/first.png",
+                  ""),
+              _buildPage("assets/hands.png",
+                  ""),
+            ],
+          ),
+          Positioned(
+            bottom: 20,
+            left: 20,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: _buildPageDots(),
             ),
           ),
-          Padding(
-             padding: const EdgeInsets.only(bottom: 90),
-            child: Container(
-                    
-                  child: const Image(image: AssetImage('assets/lang.png')),
-                
-              
-            ),
-          ),
-           ],
-  
-       ),
-       Container(
-        alignment: const Alignment(0,0.65),
-        child: Row(
-mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            SmoothPageIndicator(controller: _controller, count: 3),
-            last?
-            GestureDetector(
+          Positioned(
+            bottom: 20,
+            right: 20,
+            child: GestureDetector(
               onTap: () {
-Navigator.push(context, MaterialPageRoute(builder: (context)
-{
-return const signin();
-
-}));              },
-              
-              child: 
-              
-                Container(child: const Text("Next")),
-            
-            ): GestureDetector(
-              onTap: () {
-                _controller.nextPage(duration: const Duration(milliseconds: 500), curve: Curves.easeIn);
+                if (currentPage < 2) {
+                  pageController.animateToPage(
+                    currentPage + 1,
+                    duration: const Duration(milliseconds: 400),
+                    curve: Curves.decelerate,
+                  );
+                } else {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const signin(),
+                    ),
+                  );
+                }
               },
-              
-              child: 
-              
-                Container( child: const Padding(
-                  padding: EdgeInsets.only(top: 50),
-                  
-                  child: Card(shape: RoundedRectangleBorder(
-     borderRadius:
-      BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20),bottomLeft: Radius.circular(20),bottomRight: Radius.circular(20))),
-     color: Color.fromARGB(133, 68, 109, 90)
-  ,child: Text("Next"),),
-                )),
-            
-            )
-          ],
-        ))
-       ],
-       ),
+              child: Container(
+                width: 50,
+                height: 50,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50),
+                  color: Colors.white,
+                ),
+                child: const Center(
+                  child: Icon(
+                    Icons.arrow_forward_ios_sharp,
+                    color: Colors.black,
+                    size: 40.0,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
-}
+  }
 
+  List<Widget> _buildPageDots() {
+    List<Widget> dots = [];
+    for (int i = 0; i < 3; i++) {
+      dots.add(
+        Padding(
+          padding: const EdgeInsets.only(right: 5),
+          child: Container(
+            width:
+                i == currentPage ? 12 : 8, // Adjust size based on currentPage
+            height: i == currentPage ? 12 : 8,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: i == currentPage ? Colors.white : Colors.grey,
+            ),
+          ),
+        ),
+      );
+    }
+    return dots;
+  }
+
+  Widget _buildPage(String imagePath, String text) {
+    return Column(
+      children: [
+        const SizedBox(height: 170),
+        Image.asset(imagePath),
+        const SizedBox(height: 40),
+        Center(
+          child: Text(
+            text,
+            style: const TextStyle(color: Colors.white),
+          ),
+        ),
+        const SizedBox(height: 200),
+      ],
+    );
+  }
 }
